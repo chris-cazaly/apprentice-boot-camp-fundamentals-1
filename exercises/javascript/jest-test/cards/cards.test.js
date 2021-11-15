@@ -1,7 +1,7 @@
-const { Cards } = require('../../cards/cards.js');
+const { Cards } = require("../../cards/cards.js");
 
-describe('getCards', function () {
-  test('get deck in order, return 52 cards correctly formatted', function () {
+describe("getCards", function () {
+  test("get deck in order, return 52 cards correctly formatted", function () {
     let cards = new Cards();
     expect(cards.getCards()).toStrictEqual([
       "ace of clubs",
@@ -55,7 +55,7 @@ describe('getCards', function () {
       "10 of spades",
       "jack of spades",
       "queen of spades",
-      "king of spades"
+      "king of spades",
     ]);
   });
 });

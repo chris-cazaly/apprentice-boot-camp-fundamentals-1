@@ -1,18 +1,34 @@
+const PlayingCard = require("./playing-card.js").PlayingCard;
 // to execute the runnable code in this file, use the command
 // `node cards/cards.js` from the command line positioned at
 // the project's root directory.
 
 class Cards {
   getCards() {
-    const result = []
-    const deck = []
-  
+    const result = [];
+    const deck = [];
+
     for (let suit = 0; suit < 4; suit++) {
       for (let faceValue = 0; faceValue < 13; faceValue++) {
-        deck.push([suit, faceValue]);
+        // Create new card
+        const playingCard = new PlayingCard(suit, faceValue);
+        // Add to the deck
+        deck.push([playingCard.suit, playingCard.faceValue]);
       }
     }
-  
+
+    // Deck =
+    /* 
+      [0, 0]
+      [0, 1]
+      ...
+      [0, 13]
+      [1, 0]
+      [1, 1]
+      ...
+      [3, 13]
+    */
+
     let cardNumber = 0;
     for (let card of deck) {
       let faceValueName;
@@ -41,25 +57,38 @@ class Cards {
           faceValueName = "king";
           break;
         default:
-          throw new Error("Something went wrong " + card[1] + " is not a valid faceValue!");
+          throw new Error(
+            "Something went wrong " + card[1] + " is not a valid faceValue!"
+          );
       }
-  
+
       let suitName;
       switch (card[0]) {
-        case 0: suitName = "clubs"; break;
-        case 1: suitName = "diamonds"; break;
-        case 2: suitName = "hearts"; break;
-        case 3: suitName = "spades"; break;
-        default: throw new Error("Something went wrong " + card[0] + " is not a valid suitName!");
+        case 0:
+          suitName = "clubs";
+          break;
+        case 1:
+          suitName = "diamonds";
+          break;
+        case 2:
+          suitName = "hearts";
+          break;
+        case 3:
+          suitName = "spades";
+          break;
+        default:
+          throw new Error(
+            "Something went wrong " + card[0] + " is not a valid suitName!"
+          );
       }
-  
+
       result[cardNumber] = faceValueName + " of " + suitName;
       cardNumber++;
     }
-  
+
     return result;
-  };
-};
+  }
+}
 
 const cards = new Cards();
 const deckInOrder = cards.getCards();
@@ -68,5 +97,5 @@ for (const card of deckInOrder) {
 }
 
 module.exports = {
-  Cards
+  Cards,
 };
