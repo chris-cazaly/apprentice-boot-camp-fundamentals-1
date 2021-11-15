@@ -1,6 +1,6 @@
-const Suits = {
-    0: 'clubs',
-    1: 'diamonds',
-    2: 'hearts',
-    3: 'spades',
+const SpecialCard = {
+    1: 'ace',
+    11: 'jack',
+    12: 'queen',       
+    13: 'king',
 }
