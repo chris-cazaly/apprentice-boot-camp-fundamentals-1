@@ -12,11 +12,11 @@ class Cards {
       for (let faceValue = 1; faceValue <= 13; faceValue++) {
         // Create new card
         const playingCard = new PlayingCard(suit, faceValue);
+        console.log("HERE", playingCard);
         // Add to the deck
-        deck.push([playingCard.suit, playingCard.faceValue]);
+        deck.push(playingCard);
       }
     }
-    console.log(deck);
 
     // deck = [ array of card objects ]
 
@@ -24,7 +24,7 @@ class Cards {
     let cardNumber = 0;
     for (let card of deck) {
       let faceValueName;
-      switch (card[1]) {
+      switch (card.faceValue) {
         case 1:
           faceValueName = "ace";
           break;
@@ -37,7 +37,7 @@ class Cards {
         case 8:
         case 9:
         case 10:
-          faceValueName = (card[1]).toString();
+          faceValueName = card.faceValue.toString();
           break;
         case 11:
           faceValueName = "jack";
@@ -50,11 +50,13 @@ class Cards {
           break;
         default:
           throw new Error(
-            "Something went wrong " + card[1] + " is not a valid faceValue!"
+            "Something went wrong " +
+              card.faceValue +
+              " is not a valid faceValue!"
           );
       }
 
-      let suitName = card[0];
+      let suitName = card.suit;
       result[cardNumber] = faceValueName + " of " + suitName;
       cardNumber++;
     }
