@@ -1,6 +1,8 @@
+const Suits = require("./suits.js").Suits;
+
 class PlayingCard {
-  constructor(suit, faceValue) {
-    this.suit = suit;
+  constructor(suit, faceValue) { // always pass the key for Suits, not the dictionary itself
+    this.suit = Suits[suit];
     this.faceValue = faceValue;
   }
 
@@ -10,4 +12,4 @@ class PlayingCard {
   // }
 }
 
-module.exports = {PlayingCard};
+module.exports = { PlayingCard };

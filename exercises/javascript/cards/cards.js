@@ -17,6 +17,8 @@ class Cards {
       }
     }
 
+    // deck = [ array of card objects ]
+
     // Deck =
     /* 
       [0, 0]
@@ -62,26 +64,7 @@ class Cards {
           );
       }
 
-      let suitName;
-      switch (card[0]) {
-        case 0:
-          suitName = "clubs";
-          break;
-        case 1:
-          suitName = "diamonds";
-          break;
-        case 2:
-          suitName = "hearts";
-          break;
-        case 3:
-          suitName = "spades";
-          break;
-        default:
-          throw new Error(
-            "Something went wrong " + card[0] + " is not a valid suitName!"
-          );
-      }
-
+      let suitName = card[0];
       result[cardNumber] = faceValueName + " of " + suitName;
       cardNumber++;
     }
