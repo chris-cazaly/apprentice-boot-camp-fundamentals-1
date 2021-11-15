@@ -9,36 +9,25 @@ class Cards {
     const deck = [];
 
     for (let suit = 0; suit < 4; suit++) {
-      for (let faceValue = 0; faceValue < 13; faceValue++) {
+      for (let faceValue = 1; faceValue <= 13; faceValue++) {
         // Create new card
         const playingCard = new PlayingCard(suit, faceValue);
         // Add to the deck
         deck.push([playingCard.suit, playingCard.faceValue]);
       }
     }
+    console.log(deck);
 
     // deck = [ array of card objects ]
 
-    // Deck =
-    /* 
-      [0, 0]
-      [0, 1]
-      ...
-      [0, 13]
-      [1, 0]
-      [1, 1]
-      ...
-      [3, 13]
-    */
-
+    // if special card in dictionary, change name; do nothing otherwise
     let cardNumber = 0;
     for (let card of deck) {
       let faceValueName;
       switch (card[1]) {
-        case 0:
+        case 1:
           faceValueName = "ace";
           break;
-        case 1:
         case 2:
         case 3:
         case 4:
@@ -47,15 +36,16 @@ class Cards {
         case 7:
         case 8:
         case 9:
-          faceValueName = (card[1] + 1).toString();
-          break;
         case 10:
-          faceValueName = "jack";
+          faceValueName = (card[1]).toString();
           break;
         case 11:
-          faceValueName = "queen";
+          faceValueName = "jack";
           break;
         case 12:
+          faceValueName = "queen";
+          break;
+        case 13:
           faceValueName = "king";
           break;
         default:
