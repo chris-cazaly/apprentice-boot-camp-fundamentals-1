@@ -1,5 +1,6 @@
 const { AnimalDeck } = require("./animal-deck.js");
 const { PlayingCardDeck } = require("./playing-card-deck.js");
+const { MixedDeck } = require("./mixed-deck.js");
 const readline = require("readline");
 
 // to execute the runnable code in this file, use the command
@@ -69,6 +70,11 @@ class Snap {
 
 // const animalDeck = new AnimalDeck();
 // const snap = new Snap(animalDeck);
-const playingCardDeck = new PlayingCardDeck();
-const snap = new Snap(playingCardDeck);
+// const playingCardDeck = new PlayingCardDeck();
+// const snap = new Snap(playingCardDeck);
+
+const cards = new PlayingCardDeck();
+const animals = new AnimalDeck();
+const mixedDeck = new MixedDeck(cards, animals);
+const snap = new Snap(mixedDeck);
 snap.play();
