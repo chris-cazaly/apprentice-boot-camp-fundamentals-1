@@ -1,16 +1,33 @@
-const Suits = require("./suits.js").Suits;
-
 class PlayingCard {
   constructor(suit, faceValue) {
-    // always pass the key for Suits, not the dictionary itself
-    this.suit = Suits[suit];
-    this.faceValue = faceValue;
+    this.suit = suit;
+    this.faceValue = this.getFaceValue(faceValue);
   }
 
-  // getCard() {
-  //     // di
-  //     //makeCard()?
-  // }
+  getFaceValue(faceValue) {
+    switch (faceValue) {
+      case 1:
+        return "ace";
+
+      case 11:
+        return "jack";
+
+      case 12:
+        return "queen";
+
+      case 13:
+        return "king";
+
+      default:
+        return faceValue;
+    }
+  }
+
+  toString() {
+    return `${this.faceValue} of ${this.suit}`;
+  }
 }
 
-module.exports = { PlayingCard };
+module.exports = {
+  PlayingCard,
+};
