@@ -23,6 +23,10 @@ class PlayingCard {
     }
   }
 
+  snap(otherCard) { // move snap() to snap.js (comapare card1.value == card2.value)
+    return otherCard && this.faceValue === otherCard.faceValue;
+  }
+
   toString() {
     return `${this.faceValue} of ${this.suit}`;
   }

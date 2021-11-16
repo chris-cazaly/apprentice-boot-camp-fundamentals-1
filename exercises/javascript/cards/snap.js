@@ -10,26 +10,26 @@ class Snap {
     this.player1Score = 0;
     this.player2Score = 0;
     this.deck = deck;
-    deck.shuffle();
+    deck.shuffle(); // deck - shuffle function
   }
 
   async play() {
     let currentCard = null;
     let previousCard = null;
 
-    while (this.deck.getCards().length > 0) {
+    while (this.deck.getCards().length > 0) { // deck - get cards
       let rl = readline.createInterface({
         input: process.stdin,
         output: process.stdout,
         prompt: "play snap> ",
       });
       rl.prompt();
-      currentCard = this.deck.deal();
-      console.log(currentCard.animal);
+      currentCard = this.deck.deal(); // deck - deal
+      console.log(currentCard.animal); // card - currentCard.value or getValue() { console.log(this.value)}
 
       for await (let line of rl) {
         if (line.length > 0 && line.charAt(0).toLowerCase() === "a") {
-          if (currentCard.snap(previousCard)) {
+          if (currentCard.snap(previousCard)) { // card - snap
             console.log("SNAP! score Player 1");
             this.player1Score++;
           } else {
@@ -37,7 +37,7 @@ class Snap {
             this.player1Score--;
           }
         } else if (line.length > 0 && line.charAt(0).toLowerCase() === "l") {
-          if (currentCard.snap(previousCard)) {
+          if (currentCard.snap(previousCard)) { //card - snap
             console.log("SNAP! scorePlayer 2");
             this.player2Score++;
           } else {

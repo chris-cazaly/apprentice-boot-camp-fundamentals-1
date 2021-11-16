@@ -3,16 +3,15 @@ class AnimalCard {
     this.animal = animal;
   }
 
-  snap(otherCard) {
-    // abstract out to generic card
+  snap(otherCard) { // move snap() to snap.js (comapare card1.value == card2.value)
     return otherCard && this.animal === otherCard.animal;
   }
 
   toString() {
     return this.animal.toString();
   }
-}
+};
 
 module.exports = {
-  AnimalCard,
+  AnimalCard
 };
