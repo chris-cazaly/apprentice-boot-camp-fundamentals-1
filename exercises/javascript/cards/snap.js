@@ -1,4 +1,5 @@
 const { AnimalDeck } = require("./animal-deck.js");
+const { PlayingCardDeck } = require("./playing-card-deck.js");
 const readline = require("readline");
 
 // to execute the runnable code in this file, use the command
@@ -17,7 +18,8 @@ class Snap {
     let currentCard = null;
     let previousCard = null;
 
-    while (this.deck.getCards().length > 0) { // deck - get cards
+    while (this.deck.getCards().length > 0) {
+      // deck - get cards
       let rl = readline.createInterface({
         input: process.stdin,
         output: process.stdout,
@@ -25,11 +27,12 @@ class Snap {
       });
       rl.prompt();
       currentCard = this.deck.deal(); // deck - deal
-      console.log(currentCard.animal); // card - currentCard.value or getValue() { console.log(this.value)}
+      console.log(currentCard.getValue()); // card - currentCard.value or getValue() { console.log(this.value)}
 
       for await (let line of rl) {
         if (line.length > 0 && line.charAt(0).toLowerCase() === "a") {
-          if (currentCard.snap(previousCard)) { // card - snap
+          if (currentCard.snap(previousCard)) {
+            // card - snap
             console.log("SNAP! score Player 1");
             this.player1Score++;
           } else {
@@ -37,7 +40,8 @@ class Snap {
             this.player1Score--;
           }
         } else if (line.length > 0 && line.charAt(0).toLowerCase() === "l") {
-          if (currentCard.snap(previousCard)) { //card - snap
+          if (currentCard.snap(previousCard)) {
+            //card - snap
             console.log("SNAP! scorePlayer 2");
             this.player2Score++;
           } else {
@@ -63,6 +67,8 @@ class Snap {
   }
 }
 
-const animalDeck = new AnimalDeck();
-const snap = new Snap(animalDeck);
+// const animalDeck = new AnimalDeck();
+// const snap = new Snap(animalDeck);
+const playingCardDeck = new PlayingCardDeck();
+const snap = new Snap(playingCardDeck);
 snap.play();

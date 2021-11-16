@@ -27,6 +27,10 @@ class PlayingCard {
     return otherCard && this.faceValue === otherCard.faceValue;
   }
 
+  getValue() {
+    return this.faceValue;
+  }
+
   toString() {
     return `${this.faceValue} of ${this.suit}`;
   }
