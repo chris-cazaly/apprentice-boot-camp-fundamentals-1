@@ -28,7 +28,7 @@ class PlayingCard extends Card {
   toString() {
     return `${this.value} of ${this.suit}`;
   }
-}
+};
 
 module.exports = {
   PlayingCard,
