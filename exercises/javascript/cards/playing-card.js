@@ -1,11 +1,13 @@
-class PlayingCard {
-  constructor(suit, faceValue) {
+const { Card } = require("./card.js");
+class PlayingCard extends Card {
+  constructor(suit, value) {
+    super(value);
     this.suit = suit;
-    this.faceValue = this.getFaceValue(faceValue);
+    this.value = this.getFaceValue(value);
   }
 
-  getFaceValue(faceValue) {
-    switch (faceValue) {
+  getFaceValue(value) {
+    switch (value) {
       case 1:
         return "ace";
 
@@ -19,20 +21,12 @@ class PlayingCard {
         return "king";
 
       default:
-        return faceValue;
+        return value;
     }
   }
 
-  snap(otherCard) { // move snap() to snap.js (comapare card1.value == card2.value)
-    return otherCard && this.faceValue === otherCard.faceValue;
-  }
-
-  getValue() {
-    return this.faceValue;
-  }
-
   toString() {
-    return `${this.faceValue} of ${this.suit}`;
+    return `${this.value} of ${this.suit}`;
   }
 }
 
